@@ -9,28 +9,28 @@ const AddDoctor = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (!image) {
-    //     return;
-    // }
-    // const formData = new FormData();
-    // formData.append('name', name);
-    // formData.append('email', email);
-    // formData.append('image', image);
+    if (!image) {
+      return;
+    }
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("image", image);
 
-    // fetch('https://stark-caverns-04377.herokuapp.com/doctors', {
-    //     method: 'POST',
-    //     body: formData
-    // })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         if (data.insertedId) {
-    //             setSuccess('Doctor added successfully')
-    //             console.log('doctor added successfully')
-    //         }
-    //     })
-    //     .catch(error => {
-    //         console.error('Error:', error);
-    //     });
+    fetch("http://localhost:5000/doctors", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          setSuccess("Doctor added successfully");
+          console.log("doctor added successfully");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
