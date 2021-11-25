@@ -16,7 +16,7 @@ const Appointments = ({ date }) => {
   useEffect(() => {
     const url = `https://mighty-river-35685.herokuapp.com/appointments?email=${
       user.email
-    }&date=${date.toLocalDateString()}`;
+    }&date=${date.toLocaleDateString()}`;
     fetch(url, {
       headers: {
         authorization: `Bearer ${token}`,
