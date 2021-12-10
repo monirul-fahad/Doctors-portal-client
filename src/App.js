@@ -14,23 +14,29 @@ function App() {
       <AuthProvider>
         <Router>
           <Routes>
-            <PrivateRoute path="/appointment">
-              <Appointment></Appointment>
-            </PrivateRoute>
-            <PrivateRoute path="/dashboard">
+            <Route
+              path="/appointment"
+              element={
+                <PrivateRoute>
+                  <Appointment></Appointment>
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/dashboard"
+              element={
+                <PrivateRoute>
+                  <Dashboard></Dashboard>
+                </PrivateRoute>
+              }
+            >
               <Dashboard></Dashboard>
-            </PrivateRoute>
-            <Route path="/login">
-              <Login></Login>
             </Route>
-            <Route path="/register">
-              <Register></Register>
-            </Route>
+            <Route path="/login" element={<Login></Login>}></Route>
+            <Route path="/register" element={<Register></Register>}></Route>
 
-            <Route path="/home">
-              <Home />
-            </Route>
-            <Route exact path="/">
+            <Route path="/home" element={<Home />}></Route>
+            <Route exact path="/" element={<Home />}>
               <Home />
             </Route>
           </Routes>
